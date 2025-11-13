@@ -1,0 +1,40 @@
+class Connector {
+  constructor(startWheel, endPos) {
+    this.startWheel = startWheel;  // Wheel where the connector begins
+    this.endPos = endPos.copy();   // End point of the curve
+    this.t = random(TWO_PI);       // Time offset for animation
+    this.color = color(255, 120, 170); // Line color
+  }
+
+  // Animate the connector's slight wobble
+  update() {
+    this.t += 0.02;
+  }
+
+  // Draw a curved line with a moving control point
+  display() {
+    stroke(this.color);
+    strokeWeight(4);
+    noFill();
+
+    // Start and end positions
+    let x1 = this.startWheel.x;
+    let y1 = this.startWheel.y;
+    let x2 = this.endPos.x;
+    let y2 = this.endPos.y;
+
+    // Control point with gentle motion
+    let cx = (x1 + x2) / 2 + 30 * sin(this.t);
+    let cy = (y1 + y2) / 2 + 30 * cos(this.t);
+
+    beginShape();
+    vertex(x1, y1);
+    quadraticVertex(cx, cy, x2, y2);
+    endShape();
+
+    // Dot at the starting point
+    noStroke();
+    fill(this.color);
+    ellipse(x1, y1, 10, 10);
+  }
+}
