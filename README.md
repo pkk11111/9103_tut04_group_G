@@ -22,6 +22,6 @@ I added a coloured central circle inside each wheel to emphasize the wheel’s f
 
 I expanded each colour palette with a dark-tone colour to improve contrast and unify shadows and outlines across the generated shapes.
 
-6. Connector Colour Improvement（如果你有改）
+6. Connector Colour Improvement
 
 I updated the connector colour to be selected from the wheel’s palette for better visual consistency.
