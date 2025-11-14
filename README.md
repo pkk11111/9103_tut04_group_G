@@ -1,9 +1,9 @@
-9103_tut04_group_G
+# 9103_tut04_group_G
 Code Architecture Overview
 
 This project uses object-oriented structure to allow each team member to modify or extend a different part without conflicts.
 
-Composition
+1. Composition
 Manages the entire scene:
 
 Generates wheel positions in a loose grid
@@ -14,7 +14,7 @@ Calls update() and display() for all elements
 
 Ideal for teammates working on layout or global animations
 
-Wheel
+2. Wheel
 Represents each circular shape:
 
 Holds multiple rings
@@ -25,7 +25,7 @@ Manages its own color palette
 
 Ideal for teammates working on circle behavior or animations
 
-Ring
+3. Ring
 One layer of the wheel:
 
 Types: "solid", "dots", "rays"
@@ -36,14 +36,14 @@ Can be easily extended with new pattern types
 
 Ideal for teammates designing new textures or visual styles
 
-Connector
+4. Connector
 Curved, animated lines between circles:
 
 Quadratic bezier curve with slight noise animation
 
 Ideal for teammates adding motion, effects, or interaction
 
-sketch.js
+5. sketch.js
 Main p5.js file:
 
 Creates canvas
@@ -54,7 +54,7 @@ Calls Composition methods
 
 Should stay simple so the framework stays stable
 
-constants.js
+6. constants.js
 Stores:
 
 Color palettes
