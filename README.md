@@ -1,71 +1,26 @@
-# 9103_tut04_group_G
+Herman's Change:
 
-Code Architecture Overview
 
-This project uses object-oriented structure to allow each team member to modify or extend a different part without conflicts.
+1. Dots Ring Enhancement
 
-1. Composition
+I increased the number of dots in the dots ring type and added simple alternating colours to create a richer and more varied ring pattern.
 
-Manages the entire scene:
+2. Solid Ring Converted to Dashed Line
 
-Generates wheel positions in a loose grid
+I modified the solid ring type by replacing its continuous stroke with a clean, evenly spaced dashed outline.
 
-Creates wheels + connectors
+3. Dashed Outer Outline for Wheels
 
-Calls update() and display() for all elements
+I changed the outer boundary of each wheel from a solid circle to a uniform dashed outline to improve visual clarity.
 
-Ideal for teammates working on layout or global animations
+4. Added a Center Core Circle
 
-2. Wheel
+I added a coloured central circle inside each wheel to emphasize the wheel’s focal point and better reflect the reference artwork.
 
-Represents each circular shape:
+5. Added Dark-Tone Colours to All Palettes
 
-Holds multiple rings
+I expanded each colour palette with a dark-tone colour to improve contrast and unify shadows and outlines across the generated shapes.
 
-Has rotation animation
+6. Connector Colour Improvement
 
-Manages its own color palette
-
-Ideal for teammates working on circle behavior or animations
-
-3. Ring
-
-One layer of the wheel:
-
-Types: "solid", "dots", "rays"
-
-Procedurally generates patterns
-
-Can be easily extended with new pattern types
-
-Ideal for teammates designing new textures or visual styles
-
-4. Connector
-
-Curved, animated lines between circles:
-
-Quadratic bezier curve with slight noise animation
-
-Ideal for teammates adding motion, effects, or interaction
-
-5. sketch.js
-
-Main p5.js file:
-
-Creates canvas
-
-Manages draw loop
-
-Calls Composition methods
-
-Should stay simple so the framework stays stable
-
-6. constants.js
-
-Stores:
-
-Color palettes
-
-Background color
-
-(You can also add more style presets here later)
+I updated the connector colour to be selected from the wheel’s palette for better visual consistency.
