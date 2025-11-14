@@ -26,19 +26,29 @@ class Ring {
 
   // Thick outline ring
   drawSolid() {
-    stroke(this.colorMain);
-    strokeWeight(this.outerR - this.innerR);
-    noFill();
-    let r = this.innerR + this.outerR;
-    ellipse(0, 0, r * 2, r * 2);
-  }
+  // Herman: convert solid ring into dashed ring style
+
+  // Set dashed stroke pattern
+  drawingContext.setLineDash([8, 6]);  // [dashLength, gapLength]
+
+  stroke(this.colorMain);
+  strokeWeight(this.outerR - this.innerR);
+  noFill();
+
+  let r = this.innerR + this.outerR;
+  ellipse(0, 0, r * 2, r * 2);
+
+  // Reset dash so it won't affect other drawings
+  drawingContext.setLineDash([]);
+}
 
   // Circular ring of animated dots
   drawDots() {
     noStroke();
-    fill(this.colorMain);
 
-    let numDots = 36;
+    // Slightly more dots (closer to original painting)
+    let numDots = 42; // originally 36
+
     let r = (this.innerR + this.outerR) / 2;
 
     for (let i = 0; i < numDots; i++) {
@@ -46,8 +56,16 @@ class Ring {
       let x = r * cos(angle);
       let y = r * sin(angle);
 
-      // Noise adds organic fluctuation
+      // Perlin noise to keep original organic feeling
       let d = map(noise(this.noiseOffset + i * 0.1), 0, 1, 4, 8);
+
+      // Simple color alternation (main / secondary)
+      if (i % 2 === 0) {
+        fill(this.colorMain);
+      } else {
+        fill(this.colorSecondary);
+      }
+
       ellipse(x, y, d, d);
     }
   }

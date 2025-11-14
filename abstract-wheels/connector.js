@@ -3,7 +3,12 @@ class Connector {
     this.startWheel = startWheel;  // Wheel where the connector begins
     this.endPos = endPos.copy();   // End point of the curve
     this.t = random(TWO_PI);       // Time offset for animation
-    this.color = color(255, 120, 170); // Line color
+    // Herman:
+    // instead of a fixed colour, pick from the wheel's palette
+    this.color = random(this.startWheel.palette);
+
+    this.baseStroke = 3.0;         // base stroke width
+    this.strokeAnim = this.baseStroke;
   }
 
   // Animate the connector's slight wobble

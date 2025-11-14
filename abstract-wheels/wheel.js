@@ -58,9 +58,30 @@ class Wheel {
     fill(0, 80);
     ellipse(4, 6, this.baseRadius * 2.1, this.baseRadius * 2.1);
 
+    // Herman:
+    // add a coloured core circle in the centre of the wheel
+    // to echo the painted artwork's central "eye" motif.
+    // --------------------------------------------------
+    noStroke();
+    let coreColor = this.palette[0]; // use the first colour in the palette
+    fill(coreColor);
+    ellipse(0, 0, this.baseRadius * 0.6, this.baseRadius * 0.6);
+
     // Draw all rings
     for (let r of this.rings) r.display();
 
+    // Herman:
+    // add a subtle outer outline around the main wheel area
+    // to make the overall structure slightly clearer.
+    // --------------------------------------------------
+    noFill();
+    stroke(255, 45);        // soft outline
+    strokeWeight(1.2);
+    drawingContext.setLineDash([6, 6]);  // dash length, gap length
+    ellipse(0, 0, this.baseRadius * 2.0, this.baseRadius * 2.0);
+
+   // Reset line dash so it does not affect other drawings
+   drawingContext.setLineDash([]);
     pop();
   }
 }
