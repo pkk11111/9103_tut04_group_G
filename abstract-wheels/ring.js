@@ -26,8 +26,8 @@ class Ring {
 
   // Thick outline ring
   drawSolid() {
+    
   // Herman: convert solid ring into dashed ring style
-
   // Set dashed stroke pattern
   drawingContext.setLineDash([8, 6]);  // [dashLength, gapLength]
 
