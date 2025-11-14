@@ -17,10 +17,8 @@ class Connector {
   }
 
   // Draw a curved line with a moving control point
+  // Betty: Add shadow for every connector. 
   display() {
-    stroke(this.color);
-    strokeWeight(4);
-    noFill();
 
     // Start and end positions
     let x1 = this.startWheel.x;
@@ -31,6 +29,19 @@ class Connector {
     // Control point with gentle motion
     let cx = (x1 + x2) / 2 + 30 * sin(this.t);
     let cy = (y1 + y2) / 2 + 30 * cos(this.t);
+
+    stroke(0, 90);
+    strokeWeight(strokeWeight(4) + 3);
+    noFill();
+
+    beginShape();
+    vertex(x1 + 1, y1 + 1);
+    quadraticVertex(cx + 1, cy + 1, x2 + 1, y2 + 1);
+    endShape();
+
+    stroke(this.color);
+    strokeWeight(4);
+    noFill();
 
     beginShape();
     vertex(x1, y1);

@@ -90,3 +90,19 @@ This maintains colour harmony while giving the codebase more flexibility when re
 5. Connector Colour Adjustment
 
 I updated the connector colour to be selected from the wheel’s palette rather than using a fixed value, ensuring better colour correspondence between wheels and their connecting lines.
+
+
+
+Betty's change:
+
+1. Add some texture to the background
+
+I added some light-blue ellipses to the background so that it could be more complicated and fit with original art style better.
+
+2. Change the layer of wheels and connectors
+
+I found out the connectors were above the wheels in the original paint so I simply changed the order of display. 
+
+3. Add shadow for each connectors
+
+I created another darker and wider connectors under the original connectors to represent the shadow. Also, I changed the positions of the new connectors slightly so that they would only show on one side of the connector. 

@@ -63,8 +63,15 @@ class Composition {
   }
 
   // Draw wheels and connectors
+  // Betty: Add some texture to background & change the layer wheel and connector.
   display() {
-    for (let c of this.connectors) c.display();
+    for (let i = 0; i < 2; i++) {
+      noStroke();
+      fill(65, 105, 255, 18);
+      ellipse(random(width), random(height), random(80, 160));
+    }
     for (let w of this.wheels) w.display();
+    for (let c of this.connectors) c.display();
+    
   }
 }
