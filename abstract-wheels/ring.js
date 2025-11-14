@@ -42,13 +42,12 @@ class Ring {
   drawingContext.setLineDash([]);
 }
 
-  // Circular ring of animated dots
+   // Circular ring of animated dots
   drawDots() {
     noStroke();
+    fill(this.colorMain);
 
-    // Slightly more dots (closer to original painting)
-    let numDots = 42; // originally 36
-
+    let numDots = 36;
     let r = (this.innerR + this.outerR) / 2;
 
     for (let i = 0; i < numDots; i++) {
@@ -56,19 +55,12 @@ class Ring {
       let x = r * cos(angle);
       let y = r * sin(angle);
 
-      // Perlin noise to keep original organic feeling
+      // Noise adds organic fluctuation
       let d = map(noise(this.noiseOffset + i * 0.1), 0, 1, 4, 8);
-
-      // Simple color alternation (main / secondary)
-      if (i % 2 === 0) {
-        fill(this.colorMain);
-      } else {
-        fill(this.colorSecondary);
-      }
-
       ellipse(x, y, d, d);
     }
   }
+
 
   // Radial line pattern
   drawRays() {
