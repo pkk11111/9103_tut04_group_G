@@ -138,10 +138,12 @@ I created another darker and wider connectors under the original connectors to r
 
 Lachlan's Change:
 
-1.	Added a new hexBeads.js script
+1. Created new hexBeads.js script
 
-2.	Updated wheel placement to line up with the new hex grid
+2. Updated wheel placement to line up with the new hex grid
 
-3.	Added bead chains along each edge
+3. Added bead chains along each edge
 
-4.	Gave the beads a subtle flowing animation
+4. Gave the beads a subtle flowing animation
+
+5. Force outer ring of each wheel to be solid

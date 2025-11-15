@@ -25,6 +25,9 @@ class Wheel {
       let rnd = random();
       let type = rnd < 0.33 ? "solid" : rnd < 0.66 ? "dots" : "rays";
 
+      // Lachlan: force last ring to be solid
+      if (i === numRings - 1) type = "solid";
+
       let mainColor = random(this.palette);
       let secondaryColor = random(this.palette);
 
