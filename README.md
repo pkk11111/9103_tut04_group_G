@@ -1,5 +1,6 @@
 # 9103_tut04_group_G
-Code Architecture Overview
+
+PAN：Code Architecture Overview
 
 This project uses object-oriented structure to allow each team member to modify or extend a different part without conflicts.
 
@@ -63,6 +64,33 @@ Background color
 
 (You can also add more style presets here later)
 
+7. HexGrid & HexCell  
+Procedural bead-based animation system arranged in a hexagonal tiling.
+
+Creates a dynamic layer of animated “beads” that move, pulse, and
+interact across a large hex-grid structure.
+
+Ideal for teammates who want to experiment with complex motion,
+pattern generation, or secondary ambient animation layers.
+
+• HexGrid  
+  - Generates a rotated hexagonal lattice across the canvas  
+  - Creates and stores all HexCell objects  
+  - Handles overall grid offsets and density  
+  - Manages the animation timing shared across cells  
+
+• HexCell  
+  - Computes hexagon vertices and edge geometry  
+  - Procedurally generates bead positions along edges  
+  - Adds special beads and corner beads with unique animations  
+  - Controls local flow animation using sine-based offsets  
+  - Each bead supports wobble, pulse, drift, scale, and noise effects  
+
+• Animation Logic  
+  - Uses sine waves for continuous motion  
+  - Adds tangential and normal offsets for organic movement  
+  - Special beads have layered animations (stroke, core, dot)  
+  - Corner beads synchronized using a shared map so overlapping points are drawn once  
 
 
 Herman's Change:
