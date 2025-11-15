@@ -106,3 +106,14 @@ I found out the connectors were above the wheels in the original paint so I simp
 3. Add shadow for each connectors
 
 I created another darker and wider connectors under the original connectors to represent the shadow. Also, I changed the positions of the new connectors slightly so that they would only show on one side of the connector. 
+
+
+Lachlan's Change:
+
+1.	Added a new hexBeads.js script
+
+2.	Updated wheel placement to line up with the new hex grid
+
+3.	Added bead chains along each edge
+
+4.	Gave the beads a subtle flowing animation

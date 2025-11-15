@@ -2,43 +2,28 @@ class Composition {
   constructor() {
     this.wheels = [];      // All wheel objects in the scene
     this.connectors = [];  // Curved lines connecting wheels
+    this._grid = null;     // hex grid for bead chains
   }
 
   // Create the initial layout of wheels and connectors
   initLayout() {
-    const cols = 4;
-    const rows = 4;
-    const margin = 120;
-
-    // Base grid spacing for positioning wheels
-    const spacingX = (width - margin * 2) / (cols - 1);
-    const spacingY = (height - margin * 2) / (rows - 1);
-
     this.wheels = [];
     this.connectors = [];
+    // Lachlan: modifided creation of wheels using hexagonal grid
+    let grid = new HexGrid(random(130, 180));  // adjust this to control min/max grid radius size
+    grid.generate();
+    this._grid = grid;
 
-    // Main wheels in a loose grid
-    for (let j = 0; j < rows; j++) {
-      for (let i = 0; i < cols; i++) {
-        let x = margin + i * spacingX + random(-20, 20);
-        let y = margin + j * spacingY + random(-20, 20);
-        let r = random(60, 90);        // Slightly smaller than before
-        let palette = random(PALETTES);
-
-        let wheel = new Wheel(x, y, r, palette);
-        wheel.initRings();
-        this.wheels.push(wheel);
-      }
+    // Ensure every cell generates stable bead colours
+    for (let cell of grid.cells) {
+      let palette = random(PALETTES);  // choose per-cell bead palette
+      cell.generateBeads(palette);
     }
 
-    // Extra small wheels to fill gaps and add density
-    for (let i = 0; i < 6; i++) {
-      let x = random(margin, width - margin);
-      let y = random(margin, height - margin);
-      let r = random(30, 45);          // Much smaller
+    // Create a wheel for EVERY visible hex cell
+    for (let cell of grid.cells) {
       let palette = random(PALETTES);
-
-      let wheel = new Wheel(x, y, r, palette);
+      let wheel = new Wheel(cell.x, cell.y, cell.wheelR, palette);
       wheel.initRings();
       this.wheels.push(wheel);
     }
@@ -62,9 +47,13 @@ class Composition {
     for (let c of this.connectors) c.update();
   }
 
-  // Draw wheels and connectors
-  // Betty: Add some texture to background & change the layer wheel and connector.
+  // Draw wheels, hex bead grid and connectors
   display() {
+    // Lachlan: Draw hex bead grid
+    if (this._grid) {
+      this._grid.display();
+    }
+    // Betty: Add some texture to background & change the layer wheel and connector.
     for (let i = 0; i < 2; i++) {
       noStroke();
       fill(65, 105, 255, 18);
@@ -72,6 +61,5 @@ class Composition {
     }
     for (let w of this.wheels) w.display();
     for (let c of this.connectors) c.display();
-    
   }
 }
